@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Page background: very light gray #F6F7F9 → oklch(0.973 0.004 247) */
+    --background: 0.973 0.004 247;
+    /* Card: white #FFFFFF */
+    --card: 1 0 0;
+    --card-foreground: 0.145 0.02 264;
+    --popover: 1 0 0;
+    --popover-foreground: 0.145 0.02 264;
+
+    /* Primary text #111827 → oklch(0.211 0.022 264) */
+    --foreground: 0.211 0.022 264;
+
+    /* Primary brand green #1F7A56 → oklch(0.53 0.12 162) */
+    --primary: 0.53 0.12 162;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary / muted */
+    --secondary: 0.96 0.006 247;
+    --secondary-foreground: 0.211 0.022 264;
+    --muted: 0.96 0.006 247;
+    /* Secondary text #6B7280 → oklch(0.556 0.01 264) */
+    --muted-foreground: 0.556 0.01 264;
+
+    /* Accent: pale green #EAF6F0 → oklch(0.95 0.045 162) */
+    --accent: 0.95 0.045 162;
+    --accent-foreground: 0.53 0.12 162;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border #E6E8EC → oklch(0.922 0.005 247) */
+    --border: 0.922 0.005 247;
+    --input: 0.922 0.005 247;
+    /* Ring: focus green #3B9B73 → oklch(0.65 0.12 162) */
+    --ring: 0.65 0.12 162;
+
+    /* Chart */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.53 0.12 162;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.95 0.045 162;
+    --sidebar-accent-foreground: 0.53 0.12 162;
+    --sidebar-border: 0.922 0.005 247;
+    --sidebar-ring: 0.65 0.12 162;
+
+    /* Brand extras */
+    --brand-green: 0.53 0.12 162;
+    --brand-green-hover: 0.48 0.12 162;
+    --brand-green-light: 0.95 0.045 162;
+    --brand-green-border: 0.65 0.12 162;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .brand-green {
+    color: oklch(var(--brand-green));
+  }
+  .bg-brand-green {
+    background-color: oklch(var(--brand-green));
+  }
+  .bg-brand-green-hover:hover {
+    background-color: oklch(var(--brand-green-hover));
+  }
+  .bg-brand-light {
+    background-color: oklch(var(--brand-green-light));
+  }
+  .border-brand {
+    border-color: oklch(var(--brand-green-border));
+  }
+  .ring-brand {
+    --tw-ring-color: oklch(var(--brand-green-border));
+  }
+}
