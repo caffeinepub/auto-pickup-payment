@@ -19,6 +19,7 @@ import { toast } from "sonner";
 const UPI_ID = "rin668087-1@okicici";
 const PAYEE_NAME = "Muhammed S";
 const PAYMENT_PURPOSE = "Auto Service Payment";
+const QUICK_AMOUNTS = [100, 300, 500, 700];
 
 function buildUPILink(amount: string, appPackage?: string): string {
   const params = new URLSearchParams({
@@ -156,6 +157,11 @@ export default function App() {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
     if (error) setError("");
+  };
+
+  const handleQuickAmount = (val: number) => {
+    setAmount(String(val));
+    setError("");
   };
 
   const currentYear = new Date().getFullYear();
@@ -327,6 +333,33 @@ export default function App() {
                     {error}
                   </motion.div>
                 )}
+              </div>
+
+              {/* Quick Amount Buttons */}
+              <div className="mt-3 flex gap-2">
+                {QUICK_AMOUNTS.map((val) => (
+                  <button
+                    key={val}
+                    type="button"
+                    onClick={() => handleQuickAmount(val)}
+                    className="flex-1 py-1.5 rounded-lg text-sm font-semibold border transition-all active:scale-95"
+                    style={{
+                      backgroundColor:
+                        amount === String(val)
+                          ? "oklch(0.53 0.12 162)"
+                          : "oklch(0.95 0.045 162)",
+                      borderColor:
+                        amount === String(val)
+                          ? "oklch(0.53 0.12 162)"
+                          : "oklch(0.65 0.12 162)",
+                      color:
+                        amount === String(val) ? "white" : "oklch(0.4 0.1 162)",
+                    }}
+                    aria-label={`Set amount to ₹${val}`}
+                  >
+                    ₹{val}
+                  </button>
+                ))}
               </div>
 
               {/* Amount Note */}
